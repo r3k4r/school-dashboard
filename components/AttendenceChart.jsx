@@ -47,7 +47,7 @@ const AttendenceChart = () => {
     <div className='bg-white rounded-lg w-full h-full p-4'> 
         {/* TITLE */}
         <div className='flex items-center justify-between'>
-            <h1 className='text-lg font-semibold'>Students</h1>
+            <h1 className='text-lg font-semibold'>Attendence</h1>
             <Image src="/moreDark.png" alt="more-image" quality={100} width={20} height={20} className="cursor-pointer"/>
         </div>
 
