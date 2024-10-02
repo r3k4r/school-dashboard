@@ -2,6 +2,7 @@
 
 import EventClender from "@/components/EventClender"
 import Announcements from "@/components/Announcements"
+import BigCalendar from "@/components/BigCalender"
 
 
 const Students = () => {
@@ -12,7 +13,9 @@ const Students = () => {
        <div className="w-full xl:w-2/3 flex flex-col gap-8">
           <div className='h-full bg-white p-4 rounded-md'>
             <h1 className='text-xl font-semibold'>Schedule (A)</h1>
-          </div>       
+
+            <BigCalendar />  
+          </div>     
        </div>
 
 

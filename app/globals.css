@@ -87,9 +87,13 @@
   }
   
   .rbc-event {
+    display: flex !important; 
+    flex-direction : "column" !important; 
+    flex-wrap: nowrap !important;
+    flex-direction: "column" !important;
     border: none !important;
     color: black !important;
-    padding: 10px !important;
+    padding: 5px !important;
     margin: 10px !important;
     width: 99% !important;
   }
