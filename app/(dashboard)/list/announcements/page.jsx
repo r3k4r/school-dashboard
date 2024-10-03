@@ -4,39 +4,23 @@ import TableSearch from '@/components/TableSearch'
 import Table from '@/components/Table'
 import Link from 'next/link'
 import Image from 'next/image';
-import { role, teachersData } from "@/app/lib/data"
+import { role, announcementsData } from "@/app/lib/data"
 
 
 
 const columns = [
   {
-    header: "Info",
-    accessor: "info",
-  },
-  {
-    header: "Teacher ID",
-    accessor: "teacherId",
-    className: "hidden md:table-cell",
-  },
-  {
-    header: "Subjects",
+    header: "Title",
     accessor: "subjects",
-    className: "hidden md:table-cell",
   },
   {
-    header: "Classes",
+    header: "Class",
     accessor: "classes",
+  },
+  {
+    header: "Date",
+    accessor: "teachers",
     className: "hidden md:table-cell",
-  },
-  {
-    header: "Phone",
-    accessor: "phone",
-    className: "hidden lg:table-cell",
-  },
-  {
-    header: "Address",
-    accessor: "address",
-    className: "hidden lg:table-cell",
   },
   {
     header: "Actions",
@@ -44,31 +28,25 @@ const columns = [
   },
 ];
 
-const TeachersListPage = () => {
+const AnnouncementsListPage = () => {
 
   
 const renderRow = (item) => (
   <tr key={item.id} className='border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-sky-100'>
       <td className='flex items-center gap-4 p-4'>
-          <Image src={item?.photo} alt="teacher's photo" width={40} height={40} className='w-10 h-10 rounded-full object-cover md:max-xl:hidden' />
-
           <div className='flex flex-col'>
-              <h3 className='font-semibold'>{item?.name}</h3> 
-              <p className='text-xs text-gray-500'>{item?.email}</p> 
+              <h3 className='font-semibold'>{item?.title}</h3> 
           </div>    
       </td>
 
-      <td className='hidden md:table-cell'>{item?.teacherId}</td>
-      <td className='hidden md:table-cell'>{item?.subjects.join(", ")}</td>
-      <td className='hidden md:table-cell'>{item?.classes.join(", ")}</td>
-      <td className='hidden lg:table-cell'>{item?.phone}</td>
-      <td className='hidden lg:table-cell'>{item?.address}</td>
+      <td className=''>{item?.class}</td>
+      <td className='hidden md:table-cell'>{item?.date}</td>
       <td>
           <div className='flex items-center gap-2'>
-              <Link href={`/dashboard/teachers/${item?.id}`}>
+             <Link href={`/dashboard/teachers/${item?.id}`}>
                   <button className='w-7 h-7 rounded-full flex items-center justify-center bg-thirty'> 
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5 text-white">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4 text-white">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                     </svg>
                   </button>
               </Link>
@@ -91,7 +69,7 @@ const renderRow = (item) => (
       <div className='bg-white p-4 m-4 mt-0 rounded-md flex-1'>
         {/* TOP */}
         <div className='w-full flex items-center justify-between'>
-          <h1 className={`hidden md:block text-lg font-semibold`} >All Teachers</h1>
+          <h1 className={`hidden md:block text-lg font-semibold`} >All Announcements</h1>
 
           <div className='w-full md:w-auto flex flex-col md:flex-row items-end md:items-center gap-4'>
             <TableSearch />
@@ -99,7 +77,7 @@ const renderRow = (item) => (
             <div className='flex items-center gap-4 '>
               <button className='w-8 h-8 flex items-center justify-center p-2 rounded-full bg-ten'> <Image src="/filter.png" alt="filter image" width={14} height={14} /> </button>
               <button className='w-8 h-8 flex items-center justify-center p-2 rounded-full bg-ten'> <Image src="/sort.png" alt="filter image" width={14} height={14} /> </button>
-              {role === 'admin' && <button className='w-8 h-8 flex items-center justify-center p-2 rounded-full bg-ten'> <Image src="/plus.png" alt="filter image" width={14} height={14} /> </button> }
+              {role === 'admin' && <button className='w-8 h-8 flex items-center justify-center p-2 rounded-full bg-ten'> <Image src="/plus.png" alt="filter image" width={14} height={14} /> </button>}
             </div>
           </div>
         </div>
@@ -110,7 +88,7 @@ const renderRow = (item) => (
           <Table 
           columns={columns}
           renderRow={renderRow}
-          data={teachersData}
+          data={announcementsData}
           />
         </div>
 
@@ -121,5 +99,5 @@ const renderRow = (item) => (
     )
   }
   
-  export default TeachersListPage
+  export default AnnouncementsListPage
   

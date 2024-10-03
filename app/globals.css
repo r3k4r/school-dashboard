@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar{
+  display: none;
+}
 
 
 .react-calendar {
@@ -127,3 +130,4 @@
     color: gray !important;
     margin-bottom: 5px;
   }
+

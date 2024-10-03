@@ -4,7 +4,7 @@ import TableSearch from '@/components/TableSearch'
 import Table from '@/components/Table'
 import Link from 'next/link'
 import Image from 'next/image';
-import { role, teachersData } from "@/app/lib/data"
+import { role, studentsData } from "@/app/lib/data"
 
 
 
@@ -14,23 +14,23 @@ const columns = [
     accessor: "info",
   },
   {
-    header: "Teacher ID",
-    accessor: "teacherId",
+    header: "Student ID",
+    accessor: "studentId",
     className: "hidden md:table-cell",
   },
   {
-    header: "Subjects",
-    accessor: "subjects",
-    className: "hidden md:table-cell",
-  },
-  {
-    header: "Classes",
-    accessor: "classes",
+    header: "Grade",
+    accessor: "grades",
     className: "hidden md:table-cell",
   },
   {
     header: "Phone",
-    accessor: "phone",
+    accessor: "phones",
+    className: "hidden md:table-cell",
+  },
+  {
+    header: "Class",
+    accessor: "classes",
     className: "hidden lg:table-cell",
   },
   {
@@ -44,7 +44,7 @@ const columns = [
   },
 ];
 
-const TeachersListPage = () => {
+const StudentsListPage = () => {
 
   
 const renderRow = (item) => (
@@ -58,10 +58,10 @@ const renderRow = (item) => (
           </div>    
       </td>
 
-      <td className='hidden md:table-cell'>{item?.teacherId}</td>
-      <td className='hidden md:table-cell'>{item?.subjects.join(", ")}</td>
-      <td className='hidden md:table-cell'>{item?.classes.join(", ")}</td>
-      <td className='hidden lg:table-cell'>{item?.phone}</td>
+      <td className='hidden md:table-cell'>{item?.studentId}</td>
+      <td className='hidden md:table-cell'>{item?.grade}</td>
+      <td className='hidden md:table-cell'>{item?.phone}</td>
+      <td className='hidden lg:table-cell'>{item?.class}</td>
       <td className='hidden lg:table-cell'>{item?.address}</td>
       <td>
           <div className='flex items-center gap-2'>
@@ -91,7 +91,7 @@ const renderRow = (item) => (
       <div className='bg-white p-4 m-4 mt-0 rounded-md flex-1'>
         {/* TOP */}
         <div className='w-full flex items-center justify-between'>
-          <h1 className={`hidden md:block text-lg font-semibold`} >All Teachers</h1>
+          <h1 className={`hidden md:block text-lg font-semibold`} >All Students</h1>
 
           <div className='w-full md:w-auto flex flex-col md:flex-row items-end md:items-center gap-4'>
             <TableSearch />
@@ -99,7 +99,7 @@ const renderRow = (item) => (
             <div className='flex items-center gap-4 '>
               <button className='w-8 h-8 flex items-center justify-center p-2 rounded-full bg-ten'> <Image src="/filter.png" alt="filter image" width={14} height={14} /> </button>
               <button className='w-8 h-8 flex items-center justify-center p-2 rounded-full bg-ten'> <Image src="/sort.png" alt="filter image" width={14} height={14} /> </button>
-              {role === 'admin' && <button className='w-8 h-8 flex items-center justify-center p-2 rounded-full bg-ten'> <Image src="/plus.png" alt="filter image" width={14} height={14} /> </button> }
+              {role === 'admin' && <button className='w-8 h-8 flex items-center justify-center p-2 rounded-full bg-ten'> <Image src="/plus.png" alt="filter image" width={14} height={14} /> </button>}
             </div>
           </div>
         </div>
@@ -110,7 +110,7 @@ const renderRow = (item) => (
           <Table 
           columns={columns}
           renderRow={renderRow}
-          data={teachersData}
+          data={studentsData}
           />
         </div>
 
@@ -121,5 +121,5 @@ const renderRow = (item) => (
     )
   }
   
-  export default TeachersListPage
+  export default StudentsListPage
   
