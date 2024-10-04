@@ -65,7 +65,7 @@ const renderRow = (item) => (
       <td className='hidden lg:table-cell'>{item?.address}</td>
       <td>
           <div className='flex items-center gap-2'>
-              <Link href={`/teacher/${item?.id}`}>
+              <Link href={`/list/teachers/${item?.id}`}>
                   <button className='w-7 h-7 rounded-full flex items-center justify-center bg-thirty'> 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5 text-white">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
