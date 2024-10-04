@@ -131,3 +131,21 @@
     margin-bottom: 5px;
   }
 
+  @media (max-width: 767px) {
+    .rbc-toolbar {
+      margin-top: 10px;
+      align-items: end !important;
+        justify-content: end !important;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .rbc-toolbar-label{
+      text-align: end !important; 
+      align-items: end !important;
+      justify-content: end !important;
+      padding-right: 0 !important;
+      margin-right: 0 !important;
+    }
+}
