@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react"
+import TeacherForm from "./forms/TeacherForm";
 
 const FormModal = ({ table, type, data, id, children }) => {
 
@@ -26,7 +27,7 @@ const FormModal = ({ table, type, data, id, children }) => {
         )
         :
         (
-            "haha"
+            <TeacherForm type='create' handleClose={handleClose}/>
         )
     
   }
