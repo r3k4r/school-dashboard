@@ -4,6 +4,7 @@ import { z } from "zod"
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import InputField from "../InputField";
+import Image from "next/image";
 
 
 const schema = z.object({
@@ -45,7 +46,7 @@ const TeacherForm = ({type, data, handleClose}) => {
         <div className={`flex flex-col items-start justify-start gap-3 mt-3`}>
           <h3 className="text-md font-semibold text-gray-700">Authentication information</h3>
 
-            <div className='flex items-center justify-between gap-3'>
+            <div className='flex items-center justify-between flex-wrap gap-3'>
               {/* USERNAME */}
               <InputField label="Username" type='text' name="username" defaultValue={data?.username} register={register} error={errors?.username} />
 
@@ -62,7 +63,7 @@ const TeacherForm = ({type, data, handleClose}) => {
         <div className={`flex flex-col items-start justify-start gap-3  ${errors?.username || errors?.email || errors?.password ? 'mt-6' : 'mt-4'}`}>
           <h3 className="text-md font-semibold text-gray-700">Personal information</h3>
 
-            <div className='flex items-center justify-between gap-3'>
+            <div className='flex items-center justify-between flex-wrap gap-3'>
               {/* FIRST NAME */}
               <InputField label="First Name" type='text' name="firstName" defaultValue={data?.firstName} register={register} error={errors?.firstName} />
 
@@ -76,8 +77,8 @@ const TeacherForm = ({type, data, handleClose}) => {
             </div>
         </div>  
         
-        <div className={`flex flex-col items-start justify-start gap-3  ${errors?.firstName || errors?.lastName || errors?.phone ? 'mt-6' : 'mt-4'}`}>
-            <div className='flex items-center justify-between gap-3'>
+        <div className={`flex flex-col items-start justify-start gap-3  ${errors?.firstName || errors?.lastName || errors?.phone ? 'mt-6' : 'mt-2'}`}>
+            <div className='flex items-center justify-between flex-wrap gap-3'>
               {/* ADDRESS */}
               <InputField label="Address" type='text' name="address" defaultValue={data?.address} register={register} error={errors?.address} />
 
@@ -89,22 +90,36 @@ const TeacherForm = ({type, data, handleClose}) => {
             </div>
         </div>  
 
-        <div className={`flex flex-col items-start justify-start gap-3  ${errors?.address || errors?.bloodType || errors?.birthday ? 'mt-6' : 'mt-4'}`}>
-            <div className='flex items-center justify-between gap-3'>
-              {/* SEX */}
+        <div className={`flex flex-col items-start justify-start gap-3  ${errors?.address || errors?.bloodType || errors?.birthday ? 'mt-6' : 'mt-2'}`}>
+            <div className='flex items-center justify-between flex-wrap gap-3'>
+              {/* GENDER */}
               <div className='flex flex-col items-start justify-start relative'>
-                <select name="sex" id="sex" className={` w-[230px] bg-white border-2 border-gray-300 p-2 rounded-lg  ${errors?.username && 'border-red-600'} `}>
-                  <option value="Choose a Gender">Gender</option>
-                  <option value="male">male</option>
-                  <option value="female">Female</option>
+                <label className={` text-gray-600 text-sm left-3 px-1 select-none top-[11.5px] bg-transparent`} htmlFor="gender">Gender</label>
+                <select  defaultValue={data?.gender} name="gender" id="gender" className={`w-[230px] bg-white border-2 border-gray-300 p-2 rounded-lg text-sm text-gray-400/90 appearance-none font-medium  ${errors?.username && 'border-red-600'}`}>
+                  <option className="text-sm text-gray-300 font-medium" value="none" disabled selected>Select Gender</option>
+                  <option className="text-sm text-black font-medium" value="male">Male</option>
+                  <option className="text-sm text-black font-medium" value="female">Female</option>
                 </select>
-                {errors.birthday && <span className="absolute top-12 left-0 text-xs text-red-600 font-medium">{errors.birthday.message}</span>}
+                <div className="absolute inset-y-10 right-0 flex items-center px-2 pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-3">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                  </svg>
+                </div>
+                {errors.gender && <span className="absolute top-16 left-0 text-xs text-red-600 font-medium">{errors.gender.message}</span>}
               </div>
 
               {/* IMAGE */}
-              <div className='flex flex-col items-start justify-start relative'>
-                <input  id="img" type="file" className={` w-[230px] bg-white border-2 border-gray-300 p-2 rounded-lg  ${errors?.username && 'border-red-600'} `} {...register('img')} />
-                {errors.img && <span className="absolute top-12 left-0 text-xs text-red-600 font-medium">{errors.img.message}</span>}
+              <div className='w-ful flex flex-col items-start justify-center gap-0.5'>
+                <label className={` text-gray-600 text-sm left-3 px-1 select-none top-[11.5px] bg-transparent`} htmlFor="img">Image</label>
+                <label className={`flex items-center justify-between text-gray-600 select-none w-[230px] bg-white border-2 border-gray-300 p-1.5 rounded-lg text-xs font-medium`} htmlFor="img">
+                  <div className="flex items-center justify-star gap-2">
+                    <Image src="/upload.png" width={20} height={20} alt="upload" />
+                    <span>Upload an image</span>
+                  </div>
+                  <div className="p-1 bg-black text-white text-[10px] rounded-md">Upload</div>
+                </label>
+                <input  id="img" type="file" className={`hidden w-[230px] bg-white border-2 border-gray-300 p-2 rounded-lg text-xs font-medium  ${errors?.username && 'border-red-600'} `} {...register('img')} />
+                {errors.img && <span className="absolute top-16 left-0 text-xs text-red-600 font-medium">{errors.img.message}</span>}
               </div>
 
             </div>
