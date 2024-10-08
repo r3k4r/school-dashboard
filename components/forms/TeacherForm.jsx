@@ -3,6 +3,7 @@
 import { z } from "zod"
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import InputField from "../InputField";
 
 
 const schema = z.object({
@@ -37,7 +38,7 @@ const TeacherForm = ({type, data, handleClose}) => {
 
   return (
     <div>
-      <h1 className="text-lg font-medium">Create a new teacher</h1>
+      <h1 className="text-lg font-semibold">Create a new teacher</h1>
       <form onSubmit={onSubmit} className='mt-4 flex flex-col items-start justify-start gap-4'>
 
         {/* AUTHENTICATION INFORMATIOM */}
@@ -46,25 +47,14 @@ const TeacherForm = ({type, data, handleClose}) => {
 
             <div className='flex items-center justify-between gap-3'>
               {/* USERNAME */}
-              <div className='flex flex-col items-start justify-start relative'>
-                <label className={` text-gray-600 text-sm left-3 px-1 select-none top-[11.5px] bg-transparent`} htmlFor="username">Username</label>
-                <input  id="username" type="text" className={` w-[230px] bg-white border-2 border-gray-300 p-2 rounded-lg  ${errors?.username && 'border-red-600'} `} {...register('username')} />
-                {errors.username && <span className="absolute top-16 left-0 text-xs text-red-600 font-medium">{errors.username.message}</span>}
-              </div>
+              <InputField label="Username" type='text' name="username" defaultValue={data?.username} register={register} error={errors?.username} />
 
               {/* EMAIL */}
-              <div className='flex flex-col items-start justify-start relative'>
-                <label className="text-gray-600 text-sm left-3 px-1 select-none top-[11.5px] bg-transparent " htmlFor="email">Email</label>
-                <input  id="email" type="email" className={` w-[230px] bg-white border-2 border-gray-300 p-2 rounded-lg  ${errors?.username && 'border-red-600'} `} {...register('email')} />
-                {errors.email && <span className="absolute top-16 left-0 text-xs text-red-600 font-medium">{errors.email.message}</span>}
-              </div>
+              <InputField label="Email" type='text' name="email" defaultValue={data?.email} register={register} error={errors?.email} />
+
 
               {/* PASSWORD */}
-              <div className='flex flex-col items-start justify-start relative'>
-                <label className="text-gray-600 text-sm left-3 px-1 select-none top-[11.5px] bg-transparent " htmlFor="password">Password</label>
-                <input  id="password" type="password" className={` w-[230px] bg-white border-2 border-gray-300 p-2 rounded-lg  ${errors?.username && 'border-red-600'} `} {...register('password')} />
-                {errors.password && <span className="absolute top-16 left-0 text-xs text-red-600 font-medium">{errors.password.message}</span>}
-              </div>
+              <InputField label="Password" type='password' name="password" defaultValue={data?.password} register={register} error={errors?.password} />
             </div>
         </div>   
 
@@ -74,50 +64,28 @@ const TeacherForm = ({type, data, handleClose}) => {
 
             <div className='flex items-center justify-between gap-3'>
               {/* FIRST NAME */}
-              <div className='flex flex-col items-start justify-start relative'>
-                <label className="text-gray-600 text-sm left-3 px-1 select-none top-[11.5px] bg-transparent " htmlFor="firstName">First Name</label>
-                <input  id="firstName" type="text" className={` w-[230px] bg-white border-2 border-gray-300 p-2 rounded-lg  ${errors?.username && 'border-red-600'} `} {...register('firstName')} />
-                {errors.firstName && <span className="absolute top-16 left-0 text-xs text-red-600 font-medium">{errors.firstName.message}</span>}
-              </div>
+              <InputField label="First Name" type='text' name="firstName" defaultValue={data?.firstName} register={register} error={errors?.firstName} />
 
               {/* LAST NAME */}
-              <div className='flex flex-col items-start justify-start relative'>
-                <label className="text-gray-600 text-sm left-3 px-1 select-none top-[11.5px] bg-transparent " htmlFor="lastName">Last Name</label>
-                <input  id="lastName" type="text" className={` w-[230px] bg-white border-2 border-gray-300 p-2 rounded-lg  ${errors?.username && 'border-red-600'} `} {...register('lastName')} />
-                {errors.lastName && <span className="absolute top-16 left-0 text-xs text-red-600 font-medium">{errors.lastName.message}</span>}
-              </div>
+              <InputField label="Last Name" type='text' name="lastName" defaultValue={data?.lastName} register={register} error={errors?.lastName} />
+
 
               {/* PHONE */}
-              <div className='flex flex-col items-start justify-start relative'>
-                <label className="text-gray-600 text-sm left-3 px-1 select-none top-[11.5px] bg-transparent " htmlFor="phone">Phone</label>
-                <input  id="phone" type="phone" className={` w-[230px] bg-white border-2 border-gray-300 p-2 rounded-lg  ${errors?.username && 'border-red-600'} `} {...register('phone')} />
-                {errors.phone && <span className="absolute top-16 left-0 text-xs text-red-600 font-medium">{errors.phone.message}</span>}
-              </div>
+              <InputField label="Phone" type='phone' name="phone" defaultValue={data?.phone} register={register} error={errors?.phone} />
+
             </div>
         </div>  
         
         <div className={`flex flex-col items-start justify-start gap-3  ${errors?.firstName || errors?.lastName || errors?.phone ? 'mt-6' : 'mt-4'}`}>
             <div className='flex items-center justify-between gap-3'>
               {/* ADDRESS */}
-              <div className='flex flex-col items-start justify-start relative'>
-                <label className="text-gray-600 text-sm left-3 px-1 select-none top-[11.5px] bg-transparent " htmlFor="address">Address</label>
-                <input  id="address" type="text" className={` w-[230px] bg-white border-2 border-gray-300 p-2 rounded-lg  ${errors?.username && 'border-red-600'} `} {...register('address')} />
-                {errors.address && <span className="absolute top-16 left-0 text-xs text-red-600 font-medium">{errors.address.message}</span>}
-              </div>
+              <InputField label="Address" type='text' name="address" defaultValue={data?.address} register={register} error={errors?.address} />
 
               {/* BLOOD TYPE */}
-              <div className='flex flex-col items-start justify-start relative'>
-                <label className="text-gray-600 text-sm left-3 px-1 select-none top-[11.5px] bg-transparent " htmlFor="bloodType">Blood Type</label>
-                <input  id="bloodType" type="text" className={` w-[230px] bg-white border-2 border-gray-300 p-2 rounded-lg  ${errors?.username && 'border-red-600'} `} {...register('bloodType')} />
-                {errors.bloodType && <span className="absolute top-16 left-0 text-xs text-red-600 font-medium">{errors.bloodType.message}</span>}
-              </div>
+              <InputField label="Blood type" type='text' name="bloodType" defaultValue={data?.bloodType} register={register} error={errors?.bloodType} />
 
               {/* DATE OF BIRTH */}
-              <div className='flex flex-col items-start justify-start relative'>
-              <label className="text-gray-600 text-sm left-3 px-1 select-none top-[11.5px] bg-transparent " htmlFor="firstName">Date of birth</label>
-                <input  id="birthday" type="date" className={` w-[230px] bg-white border-2 border-gray-300 p-2 rounded-lg  ${errors?.username && 'border-red-600'} `} {...register('birthday')} />
-                {errors.birthday && <span className="absolute top-16 left-0 text-xs text-red-600 font-medium">{errors.birthday.message}</span>}
-              </div>
+              <InputField label="Birthday" type='date' name="birthday" defaultValue={data?.birthday} register={register} error={errors?.birthday} />
             </div>
         </div>  
 
