@@ -1,9 +1,12 @@
 'use client'
 
+import dynamic from "next/dynamic";
 import { useState } from "react"
-import TeacherForm from "./forms/TeacherForm";
-import ParentForm from "./forms/ParentForm";
-import StudentForm from "./forms/StudentForm ";
+import FormSkeleton from "./FormSkeleton";
+
+const TeacherForm = dynamic(() => import('./forms/TeacherForm'), {loading: () => <FormSkeleton />});
+const StudentForm = dynamic(() => import('./forms/StudentForm'), {loading: () => <FormSkeleton />});
+const ParentForm = dynamic(() => import('./forms/ParentForm'), {loading: () => <FormSkeleton />});
 
 
 const FormModal = ({ table, type, data, id, children }) => {
