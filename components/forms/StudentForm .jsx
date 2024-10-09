@@ -21,7 +21,7 @@ const schema = z.object({
     img : z.instanceof(File, {message : 'Image is required!'})
 })
 
-const Student = ({type, data, handleClose}) => {
+const StudentForm = ({type, data, handleClose}) => {
 
     const {
         register,
@@ -122,12 +122,12 @@ const Student = ({type, data, handleClose}) => {
         </div>
 
         <div className={`flex items-start justify-start gap-3  ${errors?.birthday || errors?.img ? 'mt-6' : 'mt-4'}`}>
-            <button onClick={handleClose} className="px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-md" >Cancel</button>
-            <button className="px-4 py-2 bg-black text-white text-sm font-semibold rounded-md" >Submit</button>
+            <button type="button" onClick={handleClose} className="px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-md" >Cancel</button>
+            <button type="submit" className="px-4 py-2 bg-black text-white text-sm font-semibold rounded-md" >Submit</button>
         </div>    
       </form>
     </div>
   )
 }
 
-export default Student
+export default StudentForm

@@ -3,11 +3,11 @@
 import { useState } from "react"
 import TeacherForm from "./forms/TeacherForm";
 import ParentForm from "./forms/ParentForm";
+import StudentForm from "./forms/StudentForm ";
+
 
 const FormModal = ({ table, type, data, id, children }) => {
-
   const [open, setOpen] = useState(false);
-  
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -15,7 +15,12 @@ const FormModal = ({ table, type, data, id, children }) => {
   const bgColor = type === 'plus' ? "bg-ten" : type === 'update' ? "bg-thirty" : "bg-red-600";
   
 
-//   DELETE FORM
+  const forms = {
+    teacher: (type, data) => <TeacherForm type={type} data={data} handleClose={handleClose}/>,
+    student: (type, data) => <StudentForm type={type} data={data} handleClose={handleClose}/>,
+    parent: (type, data) => <ParentForm type={type} data={data} handleClose={handleClose}/>
+  };
+  
   const Form = ()=>{
     return type === 'delete' && id ? (
         <form action='' className="flex flex-col items-start justify-start gap-2">
@@ -27,10 +32,11 @@ const FormModal = ({ table, type, data, id, children }) => {
         </form>
         )
         :
-        (
-            <ParentForm type='Create' data={data} handleClose={handleClose}/>
-        )
-    
+        type === "plus" || type === "update" ? (
+          forms[table](type, data)
+        ) : (
+          "Form not found!"
+        );
   }
 
   return (
