@@ -102,8 +102,8 @@ const renderRow = (item) => (
               <button className='w-8 h-8 flex items-center justify-center p-2 rounded-full bg-ten'> <Image src="/filter.png" alt="filter image" width={14} height={14} /> </button>
               <button className='w-8 h-8 flex items-center justify-center p-2 rounded-full bg-ten'> <Image src="/sort.png" alt="filter image" width={14} height={14} /> </button>
               {role === 'admin' && 
-              <FormModal table="teacher" type={"plus"} > 
-                  <Image src="/plus.png" alt="filter image" width={14} height={14} /> 
+              <FormModal table="teacher" type={"Create"} > 
+                  <Image src="/Create.png" alt="filter image" width={14} height={14} /> 
               </FormModal> 
               }
             </div>

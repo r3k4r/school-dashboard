@@ -11,8 +11,8 @@ const FormModal = ({ table, type, data, id, children }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const size = type === 'plus' ? "w-8 h-8" : "w-7 h-7";
-  const bgColor = type === 'plus' ? "bg-ten" : type === 'update' ? "bg-thirty" : "bg-red-600";
+  const size = type === 'Create' ? "w-8 h-8" : "w-7 h-7";
+  const bgColor = type === 'Create' ? "bg-ten" : type === 'Update' ? "bg-thirty" : "bg-red-600";
   
 
   const forms = {
@@ -32,7 +32,7 @@ const FormModal = ({ table, type, data, id, children }) => {
         </form>
         )
         :
-        type === "plus" || type === "update" ? (
+        type === "Create" || type === "Update" ? (
           forms[table](type, data)
         ) : (
           "Form not found!"

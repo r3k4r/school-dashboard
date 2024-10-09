@@ -31,7 +31,7 @@ const SpecificStudentPage = () => {
 
                         <div className='flex items-center justify-start gap-2'>
                             <h1 className='text-xl font-semibold'>Leonard Syndra</h1>
-                            <FormModal table="teacher" type={"update"} 
+                            <FormModal table="teacher" type={"Update"} 
                               data={{
                                 id: 1,
                                 username: "deanguerrero",
