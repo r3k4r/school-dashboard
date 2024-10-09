@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import TeacherForm from "./forms/TeacherForm";
+import ParentForm from "./forms/ParentForm";
 
 const FormModal = ({ table, type, data, id, children }) => {
 
@@ -27,7 +28,7 @@ const FormModal = ({ table, type, data, id, children }) => {
         )
         :
         (
-            <TeacherForm type='create' handleClose={handleClose}/>
+            <ParentForm type='Create' data={data} handleClose={handleClose}/>
         )
     
   }

@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-::-webkit-scrollbar{
+body::-webkit-scrollbar{
   display: none;
 }
+
 
 
 .react-calendar {
