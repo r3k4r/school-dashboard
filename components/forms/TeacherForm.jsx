@@ -46,7 +46,7 @@ const TeacherForm = ({type, data, handleClose}) => {
         <div className={`flex flex-col items-start justify-start gap-3 mt-3`}>
           <h3 className="text-md font-semibold text-gray-700">Authentication information</h3>
 
-            <div className='flex items-center justify-between flex-wrap gap-3'>
+            <div className='grid grid-flow-row grid-cols-2 sm:grid-cols-3 items-center justify-between flex-wrap gap-3'>
               {/* USERNAME */}
               <InputField label="Username" type='text' name="username" defaultValue={data?.username} register={register} error={errors?.username} />
 
@@ -60,10 +60,10 @@ const TeacherForm = ({type, data, handleClose}) => {
         </div>   
 
         {/* PERSONAL INFORMATION  */}
-        <div className={`flex flex-col items-start justify-start gap-3  ${errors?.username || errors?.email || errors?.password ? 'mt-6' : 'mt-4'}`}>
+        <div className={`flex flex-col items-start justify-start gap-3 mt-3  ${errors?.username || errors?.email || errors?.password ? 'mt-6' : 'mt-4'}`}>
           <h3 className="text-md font-semibold text-gray-700">Personal information</h3>
 
-            <div className='flex items-center justify-between flex-wrap gap-3'>
+            <div className='grid grid-flow-row grid-cols-2 sm:grid-cols-3 items-center justify-between flex-wrap gap-3'>
               {/* FIRST NAME */}
               <InputField label="First Name" type='text' name="firstName" defaultValue={data?.firstName} register={register} error={errors?.firstName} />
 
@@ -78,7 +78,7 @@ const TeacherForm = ({type, data, handleClose}) => {
         </div>  
         
         <div className={`flex flex-col items-start justify-start gap-3  ${errors?.firstName || errors?.lastName || errors?.phone ? 'mt-6' : 'mt-2'}`}>
-            <div className='flex items-center justify-between flex-wrap gap-3'>
+            <div className='grid grid-flow-row grid-cols-2 sm:grid-cols-3 items-center justify-between flex-wrap gap-3'>
               {/* ADDRESS */}
               <InputField label="Address" type='text' name="address" defaultValue={data?.address} register={register} error={errors?.address} />
 
@@ -100,7 +100,7 @@ const TeacherForm = ({type, data, handleClose}) => {
                   <option className="text-sm text-black font-medium" value="male">Male</option>
                   <option className="text-sm text-black font-medium" value="female">Female</option>
                 </select>
-                <div className="absolute inset-y-10 right-0 flex items-center px-2 pointer-events-none">
+                <div className="absolute inset-y-10 right-0 flex items-center px-2 pointer-events-none rotate-180">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-3">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
                   </svg>
