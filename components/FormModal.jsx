@@ -7,6 +7,10 @@ import FormSkeleton from "./FormSkeleton";
 const TeacherForm = dynamic(() => import('./forms/TeacherForm'), {loading: () => <FormSkeleton />});
 const StudentForm = dynamic(() => import('./forms/StudentForm'), {loading: () => <FormSkeleton />});
 const ParentForm = dynamic(() => import('./forms/ParentForm'), {loading: () => <FormSkeleton />});
+const SubjectForm = dynamic(() => import('./forms/SubjectForm'), {loading: () => <FormSkeleton />});
+const ClassForm = dynamic(() => import('./forms/ClassForm'), {loading: () => <FormSkeleton />});
+const LessonForm = dynamic(() => import('./forms/LessonForm'), {loading: () => <FormSkeleton />});
+
 
 
 const FormModal = ({ table, type, data, id, children }) => {
@@ -21,7 +25,10 @@ const FormModal = ({ table, type, data, id, children }) => {
   const forms = {
     teacher: (type, data) => <TeacherForm type={type} data={data} handleClose={handleClose}/>,
     student: (type, data) => <StudentForm type={type} data={data} handleClose={handleClose}/>,
-    parent: (type, data) => <ParentForm type={type} data={data} handleClose={handleClose}/>
+    parent: (type, data) => <ParentForm type={type} data={data} handleClose={handleClose}/>,
+    subject: (type, data) => <SubjectForm type={type} data={data} handleClose={handleClose}/>,
+    class: (type, data) => <ClassForm type={type} data={data} handleClose={handleClose}/>,
+    lesson: (type, data) => <LessonForm type={type} data={data} handleClose={handleClose}/>,
   };
   
   const Form = ()=>{

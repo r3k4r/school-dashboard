@@ -15,28 +15,7 @@ const mockStudents = [
   { id: 4, name: 'Student A' },
   { id: 5, name: 'Student B' },
   { id: 6, name: 'Student C' },
-  { id: 7, name: 'Student A' },
-  { id: 8, name: 'Student B' },
-  { id: 9, name: 'Student C' },
-  { id: 10, name: 'Student A' },
-  { id: 11, name: 'Student B' },
-  { id: 12, name: 'Student C' },
-  { id: 13, name: 'Student A' },
-  { id: 14, name: 'Student B' },
-  { id: 15, name: 'Student C' },
-  { id: 16, name: 'Student A' },
-  { id: 2, name: 'Student B' },
-  { id: 3, name: 'Student C' },
-  { id: 1, name: 'Student A' },
-  { id: 2, name: 'Student B' },
-  { id: 3, name: 'Student C' },
-  { id: 1, name: 'Student A' },
-  { id: 2, name: 'Student B' },
-  { id: 3, name: 'Student C' },
-  { id: 1, name: 'Student A' },
-  { id: 2, name: 'Student B' },
-  { id: 3, name: 'Student C' },
-  // Add more students here...
+
 ];
 
 const schema = z.object({
@@ -58,7 +37,6 @@ const ParentForm = ({type, data, handleClose}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStudents, setSelectedStudents] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  console.log('Selected Students:', selectedStudents);
   
   
 
@@ -95,7 +73,7 @@ const ParentForm = ({type, data, handleClose}) => {
 
   return (
     <div>
-      <h1 className="text-lg font-semibold">{type} a new parent</h1>
+      <h1 className="text-lg font-semibold">{type} a {type === "Update" ? '' : 'new'} parent</h1>
       <form name="form" onSubmit={onSubmit} className='mt-4 flex flex-col items-start justify-start gap-4'>
 
         {/* AUTHENTICATION INFORMATIOM */}
@@ -212,11 +190,12 @@ const ParentForm = ({type, data, handleClose}) => {
                         ))}
 
                       </div>
-                      <div className=''>
-                        <button onClick={() => setIsOpen(false)} className="px-4 py-2 bg-black text-white text-sm font-semibold rounded-md" >Close</button>
-                      </div>
                   </>
                   }
+
+                    <div className=''>
+                        <button onClick={() => setIsOpen(false)} className="px-4 py-2 bg-black text-white text-sm font-semibold rounded-md" >Close</button>
+                    </div>
                 </div>
             </div>
           </div>

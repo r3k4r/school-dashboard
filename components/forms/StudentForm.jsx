@@ -39,7 +39,7 @@ const StudentForm = ({type, data, handleClose}) => {
 
   return (
     <div>
-      <h1 className="text-lg font-semibold">{type} a new student</h1>
+      <h1 className="text-lg font-semibold">{type} a {type === "Update" ? '' : 'new'} student</h1>
       <form onSubmit={onSubmit} className='mt-4 flex flex-col items-start justify-start gap-4'>
 
         {/* AUTHENTICATION INFORMATIOM */}
