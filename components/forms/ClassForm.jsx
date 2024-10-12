@@ -50,7 +50,7 @@ const mockEvent = [
   
 
 const schema = z.object({
-    name : z.string().min(3, {message: 'name must be atleast 3 characters!'}).max(20, {message: 'name must not be longer tahn 20 characters!'}),
+    name : z.string().min(3, {message: 'name must be atleast 3 characters!'}).max(20, {message: 'name must not be longer than 20 characters!'}),
     capacity : z.string().min(1, {message: 'Capacity is required!'}),
     supervisor : z.string({message : 'supervisor is required!'}),
     lesson : z.string({message : 'lessons is required!'}),
@@ -165,7 +165,6 @@ const ClassForm = ({type, data, handleClose}) => {
 
         {/* AUTHENTICATION INFORMATIOM */}
         <div className={`flex flex-col items-start justify-start gap-3 mt-3`}>
-          <h3 className="text-md font-semibold text-gray-700">Authentication information</h3>
 
             <div className={`grid grid-flow-row grid-cols-2 sm:grid-cols-3 items-center justify-between  gap-3 gap-y-10 ${errors?.name || errors?.email || errors?.password ? 'gap-y-10' : ''}`}>
               {/* name */}

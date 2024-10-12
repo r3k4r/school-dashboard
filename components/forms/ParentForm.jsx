@@ -19,7 +19,7 @@ const mockStudents = [
 ];
 
 const schema = z.object({
-    username : z.string().min(3, {message: 'username must be atleast 3 characters!'}).max(20, {message: 'username must not be longer tahn 20 characters!'}),
+    username : z.string().min(3, {message: 'username must be atleast 3 characters!'}).max(20, {message: 'username must not be longer than 20 characters!'}),
     email : z.string().email({message : 'Invalid email address'}),
     password : z.string().min(8, {message : 'password must be atleast 8 characters!'}),
     firstName : z.string().min(4, {message: 'First name is required!'}),

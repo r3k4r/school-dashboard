@@ -40,7 +40,7 @@ import { useState } from "react";
   
 
 const schema = z.object({
-    name : z.string().min(3, {message: 'name must be atleast 3 characters!'}).max(20, {message: 'name must not be longer tahn 20 characters!'}),
+    name : z.string().min(3, {message: 'name must be atleast 3 characters!'}).max(20, {message: 'name must not be longer than 20 characters!'}),
     day : z.string().min(1, {message: 'Day is required!'}),
     start : z.date({message : 'strat time is required!'}),
     end : z.date({message : 'end time is required!'}),
@@ -136,12 +136,11 @@ const LessonForm = ({type, data, handleClose}) => {
 
   return (
     <div>
-      <h1 className="text-lg font-semibold">{type} a {type === "Update" ? '' : 'new'} assignment</h1>
+      <h1 className="text-lg font-semibold">{type} a {type === "Update" ? '' : 'new'} lesson</h1>
       <form onSubmit={onSubmit} className='mt-4 flex flex-col items-start justify-start gap-4'>
 
         {/* AUTHENTICATION INFORMATIOM */}
         <div className={`flex flex-col items-start justify-start gap-3 mt-3`}>
-          <h3 className="text-md font-semibold text-gray-700">Authentication information</h3>
 
             <div className={`grid grid-flow-row grid-cols-2 sm:grid-cols-3 items-center justify-between  gap-3 gap-y-10 ${errors?.name || errors?.email || errors?.password ? 'gap-y-10' : ''}`}>
               {/* name */}

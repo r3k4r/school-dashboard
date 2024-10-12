@@ -28,7 +28,7 @@ const mockLessons = [
 ];
 
 const schema = z.object({
-    name : z.string().min(3, {message: 'name must be atleast 3 characters!'}).max(20, {message: 'name must not be longer tahn 20 characters!'}),
+    name : z.string().min(3, {message: 'name must be atleast 3 characters!'}).max(20, {message: 'name must not be longer than 20 characters!'}),
     teachers : z.array(z.object({
       id: z.number(),
       name: z.string()
