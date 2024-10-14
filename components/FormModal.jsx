@@ -14,6 +14,7 @@ const ExamForm = dynamic(() => import('./forms/ExamForm'), {loading: () => <Form
 const AssignmentForm = dynamic(() => import('./forms/AssignmentForm'), {loading: () => <FormSkeleton />});
 const ResultForm = dynamic(() => import('./forms/ResultForm'), {loading: () => <FormSkeleton />});
 const EventForm = dynamic(() => import('./forms/EventForm'), {loading: () => <FormSkeleton />});
+const AnnouncementForm = dynamic(() => import('./forms/AnnouncementForm'), {loading: () => <FormSkeleton />});
 
 
 
@@ -37,6 +38,7 @@ const FormModal = ({ table, type, data, id, children }) => {
     assignment: (type, data) => <AssignmentForm type={type} data={data} handleClose={handleClose}/>,
     result: (type, data) => <ResultForm type={type} data={data} handleClose={handleClose}/>,
     event: (type, data) => <EventForm type={type} data={data} handleClose={handleClose}/>,
+    announcement: (type, data) => <AnnouncementForm type={type} data={data} handleClose={handleClose}/>,
   };
   
   const Form = ()=>{

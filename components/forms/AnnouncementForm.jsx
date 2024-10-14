@@ -4,20 +4,18 @@ import { z } from "zod"
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import InputField from "../InputField";
-import { useState } from "react";
  
   
 
 const schema = z.object({
-    title : z.string().min(5, {message: 'title must be atleast 5 characters!'}).max(20, {message: 'score must not be longer than 20 characters!'}),
-    disc : z.string({message : 'description is required!'}),
-    start : z.string({message : 'strat time is required!'}),
-    end : z.string({message : 'end time is required!'}),
-    class : z.string({message: 'class is required!'}),
-    date : z.date({message: 'date is required!'}),
+  title : z.string().min(5, {message: 'title must be atleast 5 characters!'}).max(20, {message: 'score must not be longer than 20 characters!'}),
+  desc : z.string().min(5, {message: 'description is required!'}),
+  class : z.string({message: 'class is required!'}),
+  date : z.date({message: 'Date is required!'}),
 })
 
-const EventForm = ({type, data, handleClose}) => {
+
+const AnnouncementForm = ({type, data, handleClose}) => {
 
     const {
         register,
@@ -33,7 +31,7 @@ const EventForm = ({type, data, handleClose}) => {
 
   return (
     <div>
-      <h1 className="text-lg font-semibold">{type} a {type === "Update" ? '' : 'new'} event</h1>
+      <h1 className="text-lg font-semibold">{type} a {type === "Update" ? '' : 'new'} announcement</h1>
       <form onSubmit={onSubmit} className='mt-4 flex flex-col items-start justify-start gap-4'>
 
         {/* AUTHENTICATION INFORMATIOM */}
@@ -44,14 +42,8 @@ const EventForm = ({type, data, handleClose}) => {
             {/* title */}
              <InputField label="Title" type='text' name="title" defaultValue={data?.title} register={register} error={errors?.title} />
 
-            {/* description */}
-            <InputField label="Description" type='text' name="disc" defaultValue={data?.disc} register={register} error={errors?.disc} />
-
-            {/* start */}
-            <InputField label="Start Time" type='text' name="start time" defaultValue={data?.start} register={register} error={errors?.start} />
-                        
-            {/* end */}
-            <InputField label="End Time" type='text' name="end time" defaultValue={data?.end} register={register} error={errors?.end} />
+           {/* description */}
+           <InputField label="Description" type='text' name="desc" defaultValue={data?.description} register={register} error={errors?.desc} />
 
             {/* date */}
             <InputField label="Date" type='date' name="date" defaultValue={data?.date} register={register} error={errors?.date} />
@@ -88,4 +80,4 @@ const EventForm = ({type, data, handleClose}) => {
   )
 }
 
-export default EventForm
+export default AnnouncementForm
